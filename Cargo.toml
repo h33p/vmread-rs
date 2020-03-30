@@ -1,11 +1,13 @@
 [package]
 name = "vmread"
-version = "0.1.0"
-authors = ["Aurimas Blažulionis <0x60@pm.me>"]
+version = "0.1.1"
 edition = "2018"
+authors = ["Aurimas Blažulionis <0x60@pm.me>"]
+license = "MIT"
 description = "High-level Rust bindings to vmread"
-repository = "https://github.com/Heep042/vmread-rs"
 homepage = "https://github.com/Heep042/vmread-rs"
+repository = "https://github.com/Heep042/vmread-rs"
+readme = "README.md"
 
 [features]
 default = ["vmread-sys"]
@@ -16,9 +18,9 @@ kmod_rw = ["vmread-sys-kmod"]
 rand = "0.7.3"
 
 [dependencies]
-vmread-sys = { path="vmread-sys", optional = true }
-vmread-sys-internal = { path="vmread-sys-internal", optional = true }
-vmread-sys-kmod = { path="vmread-sys-kmod", optional = true }
+vmread-sys = { path="vmread-sys", version="0.1.1", optional = true }
+vmread-sys-internal = { path="vmread-sys-internal", version="0.1.1", optional = true }
+vmread-sys-kmod = { path="vmread-sys-kmod", version="0.1.1", optional = true }
 libc = "0.2"
 
 [workspace]

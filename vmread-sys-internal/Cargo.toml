@@ -1,10 +1,12 @@
 [package]
 name = "vmread-sys-internal"
-version = "0.1.0"
-authors = ["Aurimas Blažulionis <0x60@pm.me>"]
+version = "0.1.1"
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["Aurimas Blažulionis <0x60@pm.me>"]
+license = "MIT"
+description = "Raw FFI bindings to vmread"
+homepage = "https://github.com/Heep042/vmread-rs/tree/master/vmread-sys"
+repository = "https://github.com/Heep042/vmread-rs/"
 
 [dependencies]
-vmread-sys = { path="../vmread-sys", features=["internal_rw"] }
+vmread-sys = { path="../vmread-sys", version = "0.1.1", features=["internal_rw"] }
