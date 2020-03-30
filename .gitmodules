@@ -1,0 +1,3 @@
+[submodule "vmread_raw/vmread"]
+	path = vmread-sys/vmread
+	url = git@github.com:Heep042/vmread.git

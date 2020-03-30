@@ -1,0 +1,22 @@
+[package]
+name = "vmread-sys"
+version = "0.1.0"
+links = "vmread"
+authors = ["Aurimas Blažulionis <0x60@pm.me>"]
+description = "Raw FFI bindings to vmread"
+license = "MIT"
+build = "build.rs"
+edition = "2018"
+
+[features]
+default = []
+internal_rw = []
+kmod_rw = []
+
+[dependencies]
+libc = "0.2"
+
+[build-dependencies]
+cc = { version = "1.0", features = ["parallel"] }
+pkg-config = "0.3"
+bindgen = "0.53.1"
