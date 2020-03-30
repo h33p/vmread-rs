@@ -4,7 +4,7 @@ version = "0.1.1"
 edition = "2018"
 authors = ["Aurimas Blažulionis <0x60@pm.me>"]
 license = "MIT"
-description = "Raw FFI bindings to vmread"
+description = "Raw FFI bindings to vmread (for kmod_rw feature)"
 homepage = "https://github.com/Heep042/vmread-rs/tree/master/vmread-sys"
 repository = "https://github.com/Heep042/vmread-rs/"
 
