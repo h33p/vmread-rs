@@ -3,6 +3,10 @@ use crate::sys;
 use crate::win_dll::*;
 use crate::rwlist::*;
 
+/// Structure representing a Windows process
+///
+/// The implementation provides necessary functions for reading and writing inside the process, as
+/// well as parsing its loaded modules.
 #[derive(Clone)]
 pub struct WinProcess {
     pub proc: sys::WinProc,
@@ -23,6 +27,26 @@ impl WinProcess {
         ret
     }
 
+    /// Get a read/write list for process virtual memory
+    ///
+    /// If multiple RW operations are to be performed at the same time, it is more efficient to use RWList
+    /// for the task
+    ///
+    /// # Arguments
+    ///
+    /// * `ctx` - vmread C context
+    pub fn rwlist<'a>(&self, ctx: &'a sys::WinCtx) -> RWList<'a> {
+        RWList::new(&ctx, self.proc.dirBase)
+    }
+
+    /// Read process virtual memory
+    ///
+    /// Returns a value of type `T` at a given process' virtual address
+    ///
+    /// # Arguments
+    /// 
+    /// * `ctx` - vmread C context
+    /// * `address` - address to read the data from
     pub fn read<T>(self, ctx: &sys::WinCtx, address: u64) -> T {
         let mut ret : T = unsafe { std::mem::MaybeUninit::uninit().assume_init() };
 
@@ -33,6 +57,15 @@ impl WinProcess {
         ret
     }
 
+    /// Write physical VM memory
+    ///
+    /// Write `value` into a given process' virtual address
+    ///
+    /// # Arguments
+    ///
+    /// * `ctx` - vmread C context
+    /// * `address` - address to write the data to
+    /// * `value` - reference to the value that is to be written
     pub fn write<T>(&self, ctx: &sys::WinCtx, address: u64, value: &T) -> &WinProcess {
         unsafe {
             sys::VMemWrite(&ctx.process, self.proc.dirBase, value as *const T as u64, address, std::mem::size_of::<T>() as u64);
@@ -41,6 +74,11 @@ impl WinProcess {
         self
     }
 
+    /// Refresh process module list
+    ///
+    /// # Arguments
+    ///
+    /// * `ctx` - vmread C context
     pub fn refresh_modules(&mut self, ctx: sys::WinCtx) -> &mut Self {
         let c_list = unsafe { sys::GenerateModuleList(&ctx, &self.proc) };
 
@@ -60,11 +98,8 @@ impl WinProcess {
         self
     }
 
+    /// Get process PEB
     pub fn get_peb(self, ctx: sys::WinCtx) -> sys::_PEB {
         unsafe { sys::GetPeb(&ctx, &self.proc) }
-    }
-
-    pub fn get_rwlist(&self, ctx: &sys::WinCtx) -> RWList {
-        RWList::new(&ctx, self.proc.dirBase)
     }
 }

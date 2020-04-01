@@ -1,4 +1,5 @@
 
+/// A structure representing a single Windows module export
 #[derive(Clone, Default)]
 pub struct WinExport {
     pub name: String,

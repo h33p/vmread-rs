@@ -1,22 +1,7 @@
 extern crate vmread;
 
-use std::process::Command;
-
 fn main() {
-    let pid = std::str::from_utf8(Command::new("sh")
-        .arg("-c")
-        .arg("pidof qemu-system-x86_64")
-        .output()
-        .unwrap()
-        .stdout
-        .as_slice())
-        .unwrap()
-        .trim()
-        .to_string()
-        .parse::<i32>()
-        .unwrap_or(0);
-    
-    let ctx_ret = vmread::create_context(pid);
+    let ctx_ret = vmread::create_context(0);
 
     if ctx_ret.is_ok() {
         let (mut ctx, c_ctx) = ctx_ret.unwrap();
@@ -34,7 +19,7 @@ fn main() {
                                 Some(p) => {
                                     println!("Module list for {}", s);
                                     println!("{:#14} {:#14} {:#8} {:#6} {}", "BASE ADDRESS", "ENTRY POINT", "SIZE", "LOADC", "NAME");
-                                    for i in &(p.refresh_modules(c_ctx).module_list) {
+                                    for i in &p.refresh_modules(c_ctx).module_list {
                                         println!("{:#14x} {:#14x} {:#8x} {:#6x} {}", i.info.baseAddress, i.info.entryPoint, i.info.sizeOfModule, i.info.loadCount, i.name);
                                     }
                                 },

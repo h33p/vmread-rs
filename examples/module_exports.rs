@@ -1,22 +1,7 @@
 extern crate vmread;
 
-use std::process::Command;
-
 fn main() {
-    let pid = std::str::from_utf8(Command::new("sh")
-        .arg("-c")
-        .arg("pidof qemu-system-x86_64")
-        .output()
-        .unwrap()
-        .stdout
-        .as_slice())
-        .unwrap()
-        .trim()
-        .to_string()
-        .parse::<i32>()
-        .unwrap_or(0);
-    
-    let ctx_ret = vmread::create_context(pid);
+    let ctx_ret = vmread::create_context(0);
 
     if ctx_ret.is_ok() {
         let (mut ctx, c_ctx) = ctx_ret.unwrap();
@@ -50,7 +35,7 @@ fn main() {
                                                             Some(m) => {
                                                                 println!("Export list for {}:", m.name);
                                                                 println!("{:#14}  NAME", "ADDRESS");
-                                                                for e in &(m.refresh_exports(&p.proc, c_ctx).export_list) {
+                                                                for e in &m.refresh_exports(&p.proc, c_ctx).export_list {
                                                                     println!("{:<#14x}  {}", e.address, e.name);
                                                                 }
                                                             },

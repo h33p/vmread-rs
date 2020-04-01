@@ -1,6 +1,9 @@
 
 use crate::win_export::*;
 
+/// Represents a single Windows process module
+///
+/// Has basic information about the module in `info`, and a function to retrieve list of its exports.
 #[derive(Clone)]
 pub struct WinDll {
     pub name: String,
@@ -21,6 +24,12 @@ impl WinDll {
         ret
     }
 
+    /// Refresh the export list for the module
+    ///
+    /// # Arguments
+    ///
+    /// * `proc` - target process
+    /// * `ctx` - vmread C context
     pub fn refresh_exports(&mut self, proc: &sys::WinProc, ctx: sys::WinCtx) -> &mut Self {
         let mut c_list = sys::WinExportList {
             list: std::ptr::null_mut(),

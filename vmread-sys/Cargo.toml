@@ -1,6 +1,6 @@
 [package]
 name = "vmread-sys"
-version = "0.1.1"
+version = "0.1.2"
 links = "vmread"
 build = "build.rs"
 edition = "2018"
@@ -9,6 +9,8 @@ license = "MIT"
 description = "Raw FFI bindings to vmread"
 homepage = "https://github.com/Heep042/vmread-rs/tree/master/vmread-sys-internal"
 repository = "https://github.com/Heep042/vmread-rs/"
+readme = "vmread/README.md"
+exclude = ["vmread/rwperf.png"]
 
 [features]
 default = []
