@@ -1,6 +1,6 @@
 [package]
 name = "vmread-sys"
-version = "0.1.2"
+version = "0.1.4"
 links = "vmread"
 build = "build.rs"
 edition = "2018"

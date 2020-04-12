@@ -1,6 +1,6 @@
 [package]
 name = "vmread-sys-internal"
-version = "0.1.2"
+version = "0.1.4"
 edition = "2018"
 authors = ["Aurimas Blažulionis <0x60@pm.me>"]
 license = "MIT"
@@ -9,4 +9,4 @@ homepage = "https://github.com/Heep042/vmread-rs/tree/master/vmread-sys"
 repository = "https://github.com/Heep042/vmread-rs/"
 
 [dependencies]
-vmread-sys = { path="../vmread-sys", version = "0.1.2", features=["internal_rw"] }
+vmread-sys = { path="../vmread-sys", version = "0.1.4", features=["internal_rw"] }

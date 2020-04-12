@@ -17,5 +17,5 @@ Be sure to run them as root, they will be placed in target/(debug|release)/examp
 
 ## More information
 
-* If kmod\_rw feature is used, the kernel module has to be built manually from vmread repo
+* If kmod\_rw feature is used, the required kernel module gets built inside target vmread-sys directory
 * For more information go to the [vmread repo](https://github.com/Heep042/vmread)

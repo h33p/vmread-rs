@@ -56,12 +56,14 @@ mod win_process;
 mod win_dll;
 mod win_export;
 mod rwlist;
+mod tlb;
 
 pub use self::win_context::*;
 pub use self::win_process::*;
 pub use self::win_dll::*;
 pub use self::win_export::*;
 pub use self::rwlist::*;
+pub use self::tlb::*;
 
 #[cfg(feature="internal_rw")]
 extern crate libc;
