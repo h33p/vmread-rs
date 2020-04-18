@@ -1,5 +1,16 @@
 # Rust bindings for linux vmread library
 
+
+[![Crates.io][crates-badge]][crates-url]
+[![MIT licensed][mit-badge]][mit-url]
+
+[crates-badge]: https://img.shields.io/crates/v/vmread.svg
+[crates-url]: https://crates.io/crates/vmread
+[mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[mit-url]: LICENSE.md
+
+[API Docs](https://docs.rs/vmread/latest/vmread)
+
 ## Main crates
 
 * vmread: Safe high-level API
