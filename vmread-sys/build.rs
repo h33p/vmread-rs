@@ -4,7 +4,7 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    if cfg!(debug_assertions) {
+    if true || cfg!(debug_assertions) {
         println!("cargo:rustc-link-lib=asan");
     }
     println!("cargo:rerun-if-changed=wrapper.h");
@@ -36,8 +36,9 @@ fn main() {
             })
         ;
 
-    if cfg!(debug_assertions) {
+    if true || cfg!(debug_assertions) {
         build = build.flag("-fsanitize=address")
+            .flag("-g")
             .define("MVERBOSE", "4")
             ;
     }

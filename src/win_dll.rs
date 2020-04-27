@@ -15,7 +15,7 @@ impl WinDll {
     pub fn new(info: sys::WinModule) -> WinDll {
         let mut ret = WinDll{
             info: info,
-            name: unsafe { std::ffi::CStr::from_ptr(info.name).to_str().unwrap().to_string() },
+            name: unsafe { std::ffi::CStr::from_ptr(info.name).to_str().unwrap_or("").to_string() },
             export_list: vec![],
         };
         

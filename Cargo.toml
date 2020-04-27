@@ -1,6 +1,6 @@
 [package]
 name = "vmread"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2018"
 authors = ["Aurimas Blažulionis <0x60@pm.me>"]
 license = "MIT"
@@ -18,9 +18,9 @@ kmod_rw = ["vmread-sys-kmod"]
 rand = "0.5"
 
 [dependencies]
-vmread-sys = { path="vmread-sys", version="0.1.4", optional = true }
-vmread-sys-internal = { path="vmread-sys-internal", version="0.1.4", optional = true }
-vmread-sys-kmod = { path="vmread-sys-kmod", version="0.1.4", optional = true }
+vmread-sys = { path="vmread-sys", version="0.1.5", optional = true }
+vmread-sys-internal = { path="vmread-sys-internal", version="0.1.5", optional = true }
+vmread-sys-kmod = { path="vmread-sys-kmod", version="0.1.5", optional = true }
 libc = { version="0.2", optional = true }
 smallvec = "1.2.0"
 

@@ -1,6 +1,6 @@
 [package]
 name = "vmread-sys-kmod"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2018"
 authors = ["Aurimas Blažulionis <0x60@pm.me>"]
 license = "MIT"
@@ -9,4 +9,4 @@ homepage = "https://github.com/Heep042/vmread-rs/tree/master/vmread-sys"
 repository = "https://github.com/Heep042/vmread-rs/"
 
 [dependencies]
-vmread-sys = { path="../vmread-sys", version="0.1.4", features=["kmod_rw"] }
+vmread-sys = { path="../vmread-sys", version="0.1.5", features=["kmod_rw"] }

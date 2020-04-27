@@ -9,7 +9,7 @@ pub struct WinExport {
 impl WinExport {
     pub fn new(exp: sys::WinExport) -> WinExport {
         WinExport {
-            name: unsafe { std::ffi::CStr::from_ptr(exp.name).to_str().unwrap().to_string() },
+            name: unsafe { std::ffi::CStr::from_ptr(exp.name).to_str().unwrap_or("").to_string() },
             address: exp.address,
         }
     }

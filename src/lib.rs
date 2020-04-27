@@ -51,12 +51,12 @@ pub extern crate vmread_sys_internal as sys;
 #[cfg(feature="kmod_rw")]
 pub extern crate vmread_sys_kmod as sys;
 
-mod win_context;
-mod win_process;
-mod win_dll;
-mod win_export;
-mod rwlist;
-mod tlb;
+pub mod win_context;
+pub mod win_process;
+pub mod win_dll;
+pub mod win_export;
+pub mod rwlist;
+pub mod tlb;
 
 pub use self::win_context::*;
 pub use self::win_process::*;

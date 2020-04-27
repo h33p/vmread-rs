@@ -18,7 +18,7 @@ impl WinProcess {
     pub fn new(proc: sys::WinProc) -> WinProcess {
         let mut ret = WinProcess {
             proc: proc,
-            name: unsafe { std::ffi::CStr::from_ptr(proc.name).to_str().unwrap().to_string() },
+            name: unsafe { std::ffi::CStr::from_ptr(proc.name).to_str().unwrap_or("").to_string() },
             module_list: vec![],
         };
 
@@ -47,7 +47,7 @@ impl WinProcess {
     /// 
     /// * `ctx` - vmread C context
     /// * `address` - address to read the data from
-    pub fn read<T>(self, ctx: &sys::WinCtx, address: u64) -> T {
+    pub fn read<T>(&self, ctx: &sys::WinCtx, address: u64) -> T {
         let mut ret : T = unsafe { std::mem::MaybeUninit::uninit().assume_init() };
 
         unsafe {
